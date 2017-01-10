@@ -1,0 +1,4 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="${RESOURCE_ROOT}.controller.${ROOT_VIEW}" xmlns:html="http://www.w3.org/1999/xhtml"
+	displayBlock="true" viewName="${RESOURCE_ROOT}.view.${ROOT_VIEW}">
+</core:View>
