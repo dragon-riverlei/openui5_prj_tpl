@@ -31,11 +31,16 @@ do
     folder=$(dirname "$f")
     folder=$(basename "$folder")
     file=${f##*/}
+    if [ $file == "create_project.sh" ]; then
+        continue
+    fi
     file=$(echo $file | sed "s/\${TITLE}/$title/g" | sed "s/\${RESOURCE_ROOT}/$resource_root/g" | \
         sed "s/\${ROOT_VIEW}/$root_view/g" | sed "s/\${COMPONENT_NAME}/$component_name/g" | \
         sed "s/\${COMPONENT_VERSION}/$component_version/g")
     #echo $file
-    mkdir $out_dir/$folder
+    if [ ! -d $out_dir/$folder ]; then
+        mkdir $out_dir/$folder
+    fi
     cat $f | sed "s/\${TITLE}/$title/g" | sed "s/\${RESOURCE_ROOT}/$resource_root/g" | \
         sed "s/\${ROOT_VIEW}/$root_view/g" | sed "s/\${COMPONENT_NAME}/$component_name/g" | \
         sed "s/\${COMPONENT_VERSION}/$component_version/g" > $out_dir/$folder/$file
